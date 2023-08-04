@@ -1,6 +1,3 @@
-;; just a test, opened and edited from windows symlink
-;; see if it works :-)
-
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
 (require 'package)
@@ -26,6 +23,9 @@
 
 (global-linum-mode t) ;; enable line numbers globally
 (setq inhibit-startup-message t) ;; hide the startup message
+
+;; Windows
+;;(set-default-coding-system 'utf-8)
 (setq default-directory "C:/Users/gerd/prg/")
 
 ;; material theme
@@ -45,11 +45,11 @@
 (setq scroll-step           1
       scroll-conservatively 100000)
 
-;;(require 'helm-config)
 (global-set-key (kbd "M-x") #'helm-M-x)
 (global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
 (helm-mode 1)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -59,10 +59,11 @@
  '(package-selected-packages
    '(magit smooth-scrolling material-theme helm flycheck elpy better-defaults))
  '(tool-bar-mode nil))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Terminess Nerd Font Mono" :slant normal :weight normal :height 180 :width normal)))))
- ;;'(default ((t (:family "BigBlueTermPlus Nerd Font Mono" :slant normal :weight normal :height 143 :width normal)))))
+
