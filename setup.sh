@@ -15,7 +15,7 @@ cd ~
 sudo apt update
 
 # install necessary and other useful tools
-sudo apt install git build-essential gettext cmake mc termshark tmux htop neofetch
+sudo apt install git build-essential gettext cmake mc termshark tmux htop neofetch -y
 
 # get my configs
 #git clone https://github.com/aibix0001/cfg
