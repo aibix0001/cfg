@@ -9,6 +9,8 @@
 # KNOW WHAT YOU ARE DOING!
 # ########################
 
+cd ~
+
 # update installation
 sudo apt update
 
