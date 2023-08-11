@@ -49,4 +49,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDB/CrXjnWXMeatom73hQgr5epm6IMKJGQgZLQ6461N
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDnF96HqxqaNl73bQoJzAHR12LVnTjtwiE2a+tYu/4q1cEaC6k3mvRw/+ts4t4k9hmmh543tQcaiQ4JnDS5EzVu5uTD0iruLkgQYLqcgoCa91BSQegmQlcNEPi7ArHqYgdE1cTNmM55VuMfwuXgQLmgseo+M49SL7Y789liDPekC8bzutqwW508VEp2CEcwMKGuKZkmOS7DkPAsLdSTREWbuXAUnh4kuFKSRfdxZc0UuofC0mCJ6utjdd3HTgLWSrBlUnAOo984yxHY9L6DxZ7gYNQsFj4pFCmYGWELNNecG8pEFtmGizg9YKkZLnyB0dePDDnehd2RSZstvkzfo/QkdCsB7TvMhqdu7AXve3ogmII/nYyhQ6UpUksIqN1HwzyQiD1xBQzCVUVsCXIuJLnuJjm832xw2ZBGShkjHv3m0xXvsVvGoxvC5cOpgmf7tiyvGqMYx0uExkXx+VKlgOcCJjuCa19GwwCbnkfiXSGBoqsRaT8z8GHT7j7FYY8MKEM= gerd@wasabi
 EOF
 
-echo "all done. enjoy! :)"
+# make network sockets available to users
+sudo echo 'net.ipv4.ping_group_range = 0 1000' >> /etc/sysctl.conf
+
+echo "all done. please reboot and enjoy! :)"
