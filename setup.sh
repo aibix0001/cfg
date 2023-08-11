@@ -50,6 +50,6 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDnF96HqxqaNl73bQoJzAHR12LVnTjtwiE2a+tYu/4q
 EOF
 
 # make network sockets available to users
-sudo echo 'net.ipv4.ping_group_range = 0 1000' >> /etc/sysctl.conf
+sudo bash -c " echo 'net.ipv4.ping_group_range = 0 1000' >> /etc/sysctl.conf"
 
 echo "all done. please reboot and enjoy! :)"
