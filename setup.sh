@@ -16,7 +16,7 @@ sudo apt update
 sudo apt install git build-essential gettext cmake mc termshark tmux htop neofetch
 
 # get my configs
-git clone https://github.com/aibix0001/cfg
+#git clone https://github.com/aibix0001/cfg
 
 # configure tmux
 cp cfg/tmux/.tmux.conf ~
