@@ -1,0 +1,2 @@
+# restore proxmox container from command line
+for i in $(ls /var/lib/pve/local-btrfs/dump/vzdump-lxc*zst); do pct restore --storage local-btrfs $(echo $i | sed -e 's/.*-\(lxc-\)\([0-9]\+\)-.*/\2/') $i ; done
