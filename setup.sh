@@ -31,7 +31,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # this should be fairly quick on reasonable new systems
 git clone https://github.com/neovim/neovim.git
 cd ~/neovim
-make CMAKE_BUILD_TYPE=RelWithDebInfo
+make -j $(nproc) CMAKE_BUILD_TYPE=RelWithDebInfo
 sudo make install
 
 # set neovim as default editor
