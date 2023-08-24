@@ -20,7 +20,9 @@
     helm
     helm-tramp
     helm-themes
-    highlight-indent-guides))
+    highlight-indent-guides
+    which-key
+    helpful))
 
 (mapc #'(lambda (package)
     (unless (package-installed-p package)
@@ -32,12 +34,43 @@
 ;; load theme
 (load-theme 'deeper-blue t)
 
+
+;; configure helpful
+;; Note that the built-in `describe-function' includes both functions
+;; and macros. `helpful-function' is functions only, so we provide
+;; `helpful-callable' as a drop-in replacement.
+(global-set-key (kbd "C-h f") #'helpful-callable)
+(global-set-key (kbd "C-h v") #'helpful-variable)
+(global-set-key (kbd "C-h k") #'helpful-key)
+(global-set-key (kbd "C-h x") #'helpful-command)
+
+;; Lookup the current symbol at point. C-c C-d is a common keybinding
+;; for this in lisp modes.
+(global-set-key (kbd "C-c C-d") #'helpful-at-point)
+
+;; Look up *F*unctions (excludes macros).
+;;
+;; By default, C-h F is bound to `Info-goto-emacs-command-node'. Helpful
+;; already links to the manual, if a function is referenced there.
+(global-set-key (kbd "C-h F") #'helpful-function)
+;; Lookup the current symbol at point. C-c C-d is a common keybinding
+;; for this in lisp modes.
+(global-set-key (kbd "C-c C-d") #'helpful-at-point)
+
+;; Look up *F*unctions (excludes macros).
+;;
+;; By default, C-h F is bound to `Info-goto-emacs-command-node'. Helpful
+;; already links to the manual, if a function is referenced there.
+(global-set-key (kbd "C-h F") #'helpful-function)
+
+
 ;; line-numbers and fringe/gutter setting
 (global-linum-mode t) ;; enable line numbers globally
 (setq linum-format "%6d\u2502")
 (global-hl-line-mode t) ;; enable visible horizontal line
 (add-hook 'prog-mode-hook 'highlight-indent-guides-mode) ;; add hook for indent guides
-;;(set-face-attribute 'fringe nil :background "darkorange")
+(add-hook 'prog-mode-hook 'which-key-mode) ;; add hook for which-key
+;;(set-face-attribute 'fringe nil :background "gray20")
 ;;(add-to-list 'default-frame-alist '(left-fringe . 100))
 ;;(add-to-list 'default-frame-alist '(right-fringe . 0))
 ;;(setq-default left-fringe-width 5)
@@ -66,10 +99,13 @@
 (setq scroll-step           1
       scroll-conservatively 100000)
 
+(setq visible-bell t)
+
 ;;(require 'helm-config)
 (global-set-key (kbd "M-x") #'helm-M-x)
 (global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
+(global-set-key (kbd "C-x C-b") #'helm-mini)
 (helm-mode 1)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -78,7 +114,7 @@
  ;; If there is more than one, they won't work right.
  '(menu-bar-mode t)
  '(package-selected-packages
-   '(magit-annex helm-themes helm-tramp highlight-indent-guides standard-dirs platformio-mode magit smooth-scrolling material-theme helm flycheck elpy better-defaults))
+   '(which-key magit-annex helm-themes helm-tramp highlight-indent-guides standard-dirs platformio-mode magit smooth-scrolling material-theme helm flycheck elpy better-defaults))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
 (custom-set-faces
