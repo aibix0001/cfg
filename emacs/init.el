@@ -78,11 +78,13 @@
 
 ;; set home-dir and default-directory according to OS
 (setq home-dir
-      (cond 
-        ((eq system-type 'windows-nt) 
-         (concat "C:/Users/" user-login-name "/")) 
-        (t (concat "/home/" user-login-name "/"))))
-(setq default-directory home-dir)
+      (cond
+       ((eq system-type 'windows-nt)
+        (concat "C:/Users/" user-login-name "/"))
+       (t (cond
+           ((string-equal user-login-name "root")
+            (concat "/" user-login-name "/"))
+           (t (concat "/home/" user-login-name "/"))))))
 
 ;; python addons
 (elpy-enable)
