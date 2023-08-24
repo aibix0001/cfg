@@ -1,5 +1,4 @@
-;; just a test, opened and edited from windows symlink
-;; see if it works :-)
+;; aibix' EMACS Config
 
 (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
@@ -18,6 +17,8 @@
     material-theme
     smooth-scrolling
     helm
+    helm-tramp
+    helm-themes
     highlight-indent-guides))
 
 (mapc #'(lambda (package)
@@ -27,8 +28,8 @@
 
 (setq inhibit-startup-message t) ;; hide the startup message
 
-;; load material theme
-(load-theme 'material t)
+;; load theme
+(load-theme 'deeper-blue t)
 
 ;; line-numbers and fringe/gutter setting
 (global-linum-mode t) ;; enable line numbers globally
@@ -40,13 +41,15 @@
 (setq-default left-fringe-width 11)
 (setq-default right-fringe-width 0)
 
-(setq default-directory (concat "C:/Users/" user-login-name "/"))
+;; set home-dir and default-directory according to OS
 (setq home-dir
       (cond 
         ((eq system-type 'windows-nt) 
          (concat "/C:/Users/" user-login-name "/")) 
-        ((eq system-type 'gnu/linux) (concat "/home/" user-login-name "/"))))
+        (t (concat "/home/" user-login-name "/"))))
+(setq default-directory home-dir)
 
+;; python addons
 (elpy-enable)
 (setq elpy-rpc-python-command "python3")
 
@@ -54,6 +57,7 @@
   (setq elpy-modules (delq 'elpy_module-flymake elpy-modules))
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
+;; convenience and looks stuff
 (require 'smooth-scrolling)
 (setq smooth-scroll-margin 5)
 
@@ -72,7 +76,7 @@
  ;; If there is more than one, they won't work right.
  '(menu-bar-mode nil)
  '(package-selected-packages
-   '(highlight-indent-guides standard-dirs platformio-mode magit smooth-scrolling material-theme helm flycheck elpy better-defaults))
+   '(helm-themes helm-tramp highlight-indent-guides standard-dirs platformio-mode magit smooth-scrolling material-theme helm flycheck elpy better-defaults))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
