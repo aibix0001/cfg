@@ -17,27 +17,35 @@
     flycheck
     material-theme
     smooth-scrolling
-    helm))
+    helm
+    highlight-indent-guides))
 
 (mapc #'(lambda (package)
     (unless (package-installed-p package)
       (package-install package)))
       myPackages)
 
-;;(global-linum-mode t) ;; enable line numbers globally
-
 (setq inhibit-startup-message t) ;; hide the startup message
-(setq default-directory (concat "C:/Users/" user-login-name "/"))
 
+;; load material theme
+(load-theme 'material t)
+
+;; line-numbers and fringe/gutter setting
+(global-linum-mode t) ;; enable line numbers globally
+(global-hl-line-mode t) ;; enable visible horizontal line
+(add-hook 'prog-mode-hook 'highlight-indent-guides-mode) ;; add hook for indent guides
+(set-face-attribute 'fringe nil :background "gray12")
+(add-to-list 'default-frame-alist '(left-fringe . 11))
+(add-to-list 'default-frame-alist '(right-fringe . 0))
+(setq-default left-fringe-width 11)
+(setq-default right-fringe-width 0)
+
+(setq default-directory (concat "C:/Users/" user-login-name "/"))
 (setq home-dir
       (cond 
         ((eq system-type 'windows-nt) 
          (concat "/C:/Users/" user-login-name "/")) 
         ((eq system-type 'gnu/linux) (concat "/home/" user-login-name "/"))))
-
-;; material theme
-(load-theme 'material t) ;; load material theme
-
 
 (elpy-enable)
 (setq elpy-rpc-python-command "python3")
@@ -64,7 +72,7 @@
  ;; If there is more than one, they won't work right.
  '(menu-bar-mode nil)
  '(package-selected-packages
-   '(standard-dirs platformio-mode magit smooth-scrolling material-theme helm flycheck elpy better-defaults))
+   '(highlight-indent-guides standard-dirs platformio-mode magit smooth-scrolling material-theme helm flycheck elpy better-defaults))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -72,4 +80,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Terminess Nerd Font Mono" :slant normal :weight normal :height 150 :width normal)))))
- ;;'(default ((t (:family "BigBlueTermPlus Nerd Font Mono" :slant normal :weight normal :height 143 :width normal)))))
+
