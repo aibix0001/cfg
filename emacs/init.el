@@ -45,7 +45,7 @@
 (setq home-dir
       (cond 
         ((eq system-type 'windows-nt) 
-         (concat "/C:/Users/" user-login-name "/")) 
+         (concat "C:/Users/" user-login-name "/")) 
         (t (concat "/home/" user-login-name "/"))))
 (setq default-directory home-dir)
 
@@ -75,6 +75,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(menu-bar-mode nil)
+ '(scroll-bar-mode nil)
  '(package-selected-packages
    '(helm-themes helm-tramp highlight-indent-guides standard-dirs platformio-mode magit smooth-scrolling material-theme helm flycheck elpy better-defaults))
  '(tool-bar-mode nil))
