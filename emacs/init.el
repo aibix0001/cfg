@@ -16,6 +16,7 @@
     flycheck
     material-theme
     smooth-scrolling
+    magit
     helm
     helm-tramp
     helm-themes
@@ -33,13 +34,14 @@
 
 ;; line-numbers and fringe/gutter setting
 (global-linum-mode t) ;; enable line numbers globally
+(setq linum-format "%6d\u2502")
 (global-hl-line-mode t) ;; enable visible horizontal line
 (add-hook 'prog-mode-hook 'highlight-indent-guides-mode) ;; add hook for indent guides
-(set-face-attribute 'fringe nil :background "gray12")
-(add-to-list 'default-frame-alist '(left-fringe . 11))
-(add-to-list 'default-frame-alist '(right-fringe . 0))
-(setq-default left-fringe-width 11)
-(setq-default right-fringe-width 0)
+;;(set-face-attribute 'fringe nil :background "darkorange")
+;;(add-to-list 'default-frame-alist '(left-fringe . 100))
+;;(add-to-list 'default-frame-alist '(right-fringe . 0))
+;;(setq-default left-fringe-width 5)
+;;(setq-default right-fringe-width 0)
 
 ;; set home-dir and default-directory according to OS
 (setq home-dir
@@ -74,10 +76,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(menu-bar-mode nil)
- '(scroll-bar-mode nil)
+ '(menu-bar-mode t)
  '(package-selected-packages
-   '(helm-themes helm-tramp highlight-indent-guides standard-dirs platformio-mode magit smooth-scrolling material-theme helm flycheck elpy better-defaults))
+   '(magit-annex helm-themes helm-tramp highlight-indent-guides standard-dirs platformio-mode magit smooth-scrolling material-theme helm flycheck elpy better-defaults))
+ '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
