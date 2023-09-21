@@ -33,7 +33,7 @@
 (setq inhibit-startup-message t) ;; hide the startup message
 
 ;; load theme
-(load-theme 'deeper-blue t)
+(load-theme 'material t)
 
 
 ;; configure helpful
