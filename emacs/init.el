@@ -63,10 +63,16 @@
 ;; already links to the manual, if a function is referenced there.
 (global-set-key (kbd "C-h F") #'helpful-function)
 
-
 ;; line-numbers and fringe/gutter setting
-(global-linum-mode t) ;; enable line numbers globally
-(setq linum-format "%6d\u2502")
+;;
+;; "old" style
+(require 'nlinum)
+(global-nlinum-mode t)
+(setq nlinum-format "%6d\u2502")
+;;
+;; "new" style
+;;(global-display-line-numbers-mode t) ;; enable line numbers globally
+
 (global-hl-line-mode t) ;; enable visible horizontal line
 (add-hook 'prog-mode-hook 'highlight-indent-guides-mode) ;; add hook for indent guides
 (add-hook 'prog-mode-hook 'which-key-mode) ;; add hook for which-key
@@ -85,6 +91,8 @@
            ((string-equal user-login-name "root")
             (concat "/" user-login-name "/"))
            (t (concat "/home/" user-login-name "/"))))))
+
+(setq default-directory home-dir)
 
 ;; python addons
 (elpy-enable)
@@ -116,7 +124,7 @@
  ;; If there is more than one, they won't work right.
  '(menu-bar-mode t)
  '(package-selected-packages
-   '(which-key magit-annex helm-themes helm-tramp highlight-indent-guides standard-dirs platformio-mode magit smooth-scrolling material-theme helm flycheck elpy better-defaults))
+   '(nlinum which-key magit-annex helm-themes helm-tramp highlight-indent-guides standard-dirs platformio-mode magit smooth-scrolling material-theme helm flycheck elpy better-defaults))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
 (custom-set-faces
@@ -124,5 +132,5 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Terminess Nerd Font Mono" :slant normal :weight normal :height 150 :width normal)))))
+ '(default ((t (:family "Terminess Nerd Font Mono" :slant normal :weight normal :height 140 :width normal)))))
 
