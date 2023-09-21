@@ -22,7 +22,8 @@
     helm-themes
     highlight-indent-guides
     which-key
-    helpful))
+    helpful
+    nlinum))
 
 (mapc #'(lambda (package)
     (unless (package-installed-p package)
