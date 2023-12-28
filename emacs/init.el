@@ -21,6 +21,7 @@
     helm-tramp
     helm-themes
     highlight-indent-guides
+    indent-tools
     which-key
     helpful
     nlinum))
@@ -33,7 +34,7 @@
 (setq inhibit-startup-message t) ;; hide the startup message
 
 ;; load theme
-(load-theme 'material t)
+;;(load-theme 'wombat t)
 
 
 ;; configure helpful
@@ -77,6 +78,19 @@
 (global-hl-line-mode t) ;; enable visible horizontal line
 (add-hook 'prog-mode-hook 'highlight-indent-guides-mode) ;; add hook for indent guides
 (add-hook 'prog-mode-hook 'which-key-mode) ;; add hook for which-key
+
+;; configure colors for indent guides
+;;(set-face-background 'highlight-indent-guides-odd-face "darkgray")
+;;(set-face-background 'highlight-indent-guides-even-face "dimgray")
+;;(set-face-foreground 'highlight-indent-guides-character-face "dimgray")
+
+;; my test adding highlight-indentation-mode zu yaml-mode
+(add-hook 'yaml-mode-hook 'highlight-indentation-mode)
+;; and added indent-tools-hydra/body shortcut
+(require 'indent-tools)
+(add-hook 'yaml-mode-hook
+	  (lambda () (define-key yaml-mode-map (kbd "C-c <") 'indent-tools-hydra/body))
+)
 ;;(set-face-attribute 'fringe nil :background "gray20")
 ;;(add-to-list 'default-frame-alist '(left-fringe . 100))
 ;;(add-to-list 'default-frame-alist '(right-fringe . 0))
@@ -125,13 +139,7 @@
  ;; If there is more than one, they won't work right.
  '(menu-bar-mode t)
  '(package-selected-packages
-   '(nlinum which-key magit-annex helm-themes helm-tramp highlight-indent-guides standard-dirs platformio-mode magit smooth-scrolling material-theme helm flycheck elpy better-defaults))
+   '(indent-tools highlight-indentation clipetty ansible ansible-doc lxc lxc-tramp nlinum which-key magit-annex helm-themes helm-tramp highlight-indent-guides standard-dirs platformio-mode magit smooth-scrolling material-theme helm flycheck elpy better-defaults))
  '(scroll-bar-mode nil)
- '(tool-bar-mode nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:family "Terminess Nerd Font Mono" :slant normal :weight normal :height 140 :width normal)))))
-
+ '(tool-bar-mode nil)
+ '(warning-suppress-types '((comp))))
