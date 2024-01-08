@@ -24,6 +24,8 @@
     indent-tools
     which-key
     helpful
+    undo-tree
+    ace-window
     nlinum))
 
 (mapc #'(lambda (package)
@@ -36,6 +38,13 @@
 ;; load theme
 ;;(load-theme 'wombat t)
 
+;; undo-tree
+(global-undo-tree-mode)
+(setq undo-tree-auto-save-history nil)
+(setq undo-tree-visualizer-diff t)
+
+;; ace-window
+(global-set-key (kbd "M-p") 'ace-window)
 
 ;; configure helpful
 ;; Note that the built-in `describe-function' includes both functions
@@ -128,9 +137,12 @@
 
 ;;(require 'helm-config)
 (global-set-key (kbd "M-x") #'helm-M-x)
+(global-set-key (kbd "M-y") #'helm-show-kill-ring)
 (global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
 (global-set-key (kbd "C-x C-b") #'helm-mini)
+(global-set-key (kbd "C-x b") #'helm-buffers-list)
+(setq helm-move-to-line-cycle-in-source t)
 (helm-mode 1)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -139,7 +151,13 @@
  ;; If there is more than one, they won't work right.
  '(menu-bar-mode t)
  '(package-selected-packages
-   '(indent-tools highlight-indentation clipetty ansible ansible-doc lxc lxc-tramp nlinum which-key magit-annex helm-themes helm-tramp highlight-indent-guides standard-dirs platformio-mode magit smooth-scrolling material-theme helm flycheck elpy better-defaults))
+   '(ace-window undo-tree yaml-mode indent-tools highlight-indentation clipetty ansible ansible-doc lxc lxc-tramp nlinum which-key magit-annex helm-themes helm-tramp highlight-indent-guides standard-dirs platformio-mode magit smooth-scrolling material-theme helm flycheck elpy better-defaults))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil)
  '(warning-suppress-types '((comp))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
