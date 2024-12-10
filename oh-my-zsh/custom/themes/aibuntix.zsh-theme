@@ -1,14 +1,13 @@
 # fino.zsh-theme
 
 # Use with a dark background and 256-color terminal!
-# Meant for people with venv and git. Tested on Ubuntu 24.04.
+# Meant for people with rbenv and git. Tested only on OS X 10.7.
 
 # You can set your computer name in the ~/.box-name file if you want.
 
 # Borrowing shamelessly from these oh-my-zsh themes:
 #   bira
 #   robbyrussell
-#   fino (it's basically an edited fino; many thanks to the initial author!)
 #
 # Also borrowing from http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/
 
@@ -37,12 +36,12 @@ ${FG[032]}╰─${prompt_char}%{$reset_color%} "
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" ${FG[042]}on%{$reset_color%} ${FG[255]}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="${FG[202]}✘✘✘"
-ZSH_THEME_GIT_PROMPT_CLEAN="${FG[040]}✔"
+ZSH_THEME_GIT_PROMPT_DIRTY="${FG[204]}✘✘✘"
+ZSH_THEME_GIT_PROMPT_CLEAN="${FG[042]}✔"
 
 ZSH_THEME_RUBY_PROMPT_PREFIX=" ${FG[042]}using${FG[243]} ‹"
 ZSH_THEME_RUBY_PROMPT_SUFFIX="›%{$reset_color%}"
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
-ZSH_THEME_VIRTUALENV_PREFIX=" ${FG[042]}using${FG[226]} «"
+ZSH_THEME_VIRTUALENV_PREFIX=" ${FG[042]}using${FG[228]} «"
 ZSH_THEME_VIRTUALENV_SUFFIX="»%{$reset_color%}"
