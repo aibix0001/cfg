@@ -23,6 +23,7 @@
           - git
           - curl
           - tmux
+          - build-essential
           - python3-venv
           - python3-pip
         state: present
