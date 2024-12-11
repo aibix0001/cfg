@@ -10,7 +10,7 @@
     user_name: "{{ ansible_user }}"
     home_dir: "/home/{{ ansible_user }}"
     config_repo_dest: "{{ home_dir }}/configs"
-    tmux_tpm_repo_dest: "{{ homedir }}/.tmux/plugins/tpm"
+    tmux_tpm_repo_dest: "{{ home_dir }}/.tmux/plugins/tpm"
 
   tasks:
 
