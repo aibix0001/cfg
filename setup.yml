@@ -6,9 +6,11 @@
     git_repo: "https://github.com/aibix0001/cfg.git"
     ohmyzsh_install_script: "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
     pyautoenv_repo: "https://github.com/hsaunders1904/pyautoenv.git"
+    tmux_tpm_repo: "https://github.com/tmux-plugins/tpm.git"
     user_name: "{{ ansible_user }}"
     home_dir: "/home/{{ ansible_user }}"
     config_repo_dest: "{{ home_dir }}/configs"
+    tmux_tpm_repo_dest: "{{ homedir }}/.tmux/plugins/tpm"
 
   tasks:
 
@@ -30,6 +32,13 @@
       git:
         repo: "{{ git_repo }}"
         dest: "{{ config_repo_dest }}"
+        version: main
+      become: false
+
+    - name: Repo für tmux tpm clonen
+      git:
+        repo: "{{ tmux_tpm_repo }}"
+        dest: "{{ tmux_tpm_repo_dest }}"
         version: main
       become: false
 
