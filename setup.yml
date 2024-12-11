@@ -67,5 +67,5 @@
     - name: Repo für pyautoenv clonen
       git:
         repo: "{{ pyautoenv_repo }}"
-        dest: "{{ home_dir }}/.oh-my-zsh/custom/plugins"
+        dest: "{{ home_dir }}/.oh-my-zsh/custom/plugins/pyautoenv"
       become: false
