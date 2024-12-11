@@ -42,6 +42,15 @@
       args:
         creates: "{{ home_dir }}/.oh-my-zsh"
 
+    - name: SSH authorized_keys kopieren
+      copy:
+        remote_src: true
+        src: "{{ config_repo_dest }}/ssh/authorized_keys"
+        dest: "{{ home_dir }}/.ssh"
+        owner: "{{ user_name }}"
+        mode: '0644'
+      become: false
+
     - name: Config für zsh übernehmen
       copy:
         remote_src: true
