@@ -1,0 +1,71 @@
+---
+- name: Linux shell einrichten
+  hosts: all
+  become: true
+  vars:
+    git_repo: "https://github.com/aibix0001/cfg.git"
+    ohmyzsh_install_script: "https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
+    pyautoenv_repo: "https://github.com/hsaunders1904/pyautoenv.git"
+    user_name: "{{ ansible_user }}"
+    home_dir: "/home/{{ ansible_user }}"
+    config_repo_dest: "{{ home_dir }}/configs"
+
+  tasks:
+
+    - name: Pakete installieren
+      apt:
+        name:
+          - zsh
+          - mc
+          - fzf
+          - git
+          - curl
+          - python3-venv
+          - python3-pip
+        state: present
+        update_cache: yes
+
+    - name: Repo für configs clonen
+      git:
+        repo: "{{ git_repo }}"
+        dest: "{{ config_repo_dest }}"
+        version: main
+      become: false
+
+    - name: Oh-My-Zsh für user installieren
+      become: false
+      ansible.builtin.shell: |
+        if [ ! -d "{{ home_dir }}/.oh-my-zsh" ]; then
+          curl -fsSL {{ ohmyzsh_install_script }} | bash
+        fi
+      args:
+        creates: "{{ home_dir }}/.oh-my-zsh"
+
+    - name: Config für zsh übernehmen
+      copy:
+        remote_src: true
+        src: "{{ config_repo_dest }}/zsh/.zshrc"
+        dest: "{{ home_dir }}/.zshrc"
+        owner: "{{ user_name }}"
+        mode: '0644'
+      become: false
+
+    - name: Theme für zsh übernehmen
+      copy:
+        remote_src: true
+        src: "{{ config_repo_dest }}/oh-my-zsh/custom/themes/aibuntix.zsh-theme"
+        dest: "{{ home_dir }}/.oh-my-zsh/custom/themes/aibuntix.zsh-theme"
+        owner: "{{ user_name }}"
+        mode: '0644'
+      become: false
+
+    - name: Default-Shell zu zsh wechseln
+      user:
+        name: "{{ user_name }}"
+        shell: /usr/bin/zsh
+
+    - name: Repo für pyautoenv clonen
+      git:
+        repo: "{{ pyautoenv_repo }}"
+        dest: "{{ home_dir }}/.oh-my-zsh/custom/plugins"
+      become: false
