@@ -20,6 +20,7 @@
           - fzf
           - git
           - curl
+          - tmux
           - python3-venv
           - python3-pip
         state: present
