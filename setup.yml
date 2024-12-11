@@ -88,3 +88,12 @@
         repo: "{{ pyautoenv_repo }}"
         dest: "{{ home_dir }}/.oh-my-zsh/custom/plugins/pyautoenv"
       become: false
+
+    - name: Config für tmux übernehmen
+      copy:
+        remote_src: true
+        src: "{{ config_repo_dest }}/tmux/.tmux.conf"
+        dest: "{{ home_dir }}/.tmux.conf"
+        owner: "{{ user_name }}"
+        mode: '0644'
+      become: false
