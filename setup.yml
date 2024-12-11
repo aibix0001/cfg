@@ -32,7 +32,7 @@
       git:
         repo: "{{ git_repo }}"
         dest: "{{ config_repo_dest }}"
-        version: main
+        version: alternatecolors
       become: false
 
     - name: Repo für tmux tpm clonen
