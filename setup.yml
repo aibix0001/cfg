@@ -39,7 +39,7 @@
       git:
         repo: "{{ tmux_tpm_repo }}"
         dest: "{{ tmux_tpm_repo_dest }}"
-        version: main
+        version: master
       become: false
 
     - name: Oh-My-Zsh für user installieren
